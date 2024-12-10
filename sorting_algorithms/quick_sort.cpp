@@ -1,6 +1,8 @@
+#include <iostream>
 #include <vector>
 #include <random>
 #include <time.h>
+//#include "../print_step.h"
 
 void help(std::vector<int>& input, int low, int high) {
     if (low >= high) return;
@@ -9,6 +11,8 @@ void help(std::vector<int>& input, int low, int high) {
     int j;
     int left = low;
     int right = high;
+
+    std::cout << std::endl;
 
     while (true) {
         while (input.at(left) < pivot) {
@@ -27,6 +31,8 @@ void help(std::vector<int>& input, int low, int high) {
         int hold = input.at(left);
         input.at(left) = input.at(right);
         input.at(right) = hold;
+
+//        printStep(input);
     }
 
     help(input, 0, j);

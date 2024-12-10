@@ -1,5 +1,5 @@
 #include <vector>
-#include "../print_step.h"
+//#include "../print_step.h"
 
 std::vector<int> mergeSort(std::vector<int> input) {
     if (input.size() == 1) {
@@ -39,7 +39,7 @@ std::vector<int> mergeSort(std::vector<int> input) {
         pointR++;
     }
 
-    printStep(output);
+    //printStep(output);
 
     return output;
 }
