@@ -28,7 +28,9 @@ int main() {
     std::vector<int> input;
     std::string in;
 
-    input = lineToVec(std::cin);
+    //input = lineToVec(std::cin);
+
+    input = {5432, 3, 1, 2, 90, 100, 111, 50, 60, 2};
 
     std::vector<int> result = heapSort(input);
 

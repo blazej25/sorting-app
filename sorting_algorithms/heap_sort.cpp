@@ -10,8 +10,11 @@ void swap(std::vector<int>& input, int first, int second) {
 void heapify(std::vector<int>& input, int index) {
     int left = 0, right = 0;
 
-    if (index * 2 < input.size()) left = index * 2;
-    if (index * 2 + 1 < input.size()) right = index * 2 + 1;
+    if (index > 0 && (index + 1) * 2 < input.size()) left = (index + 1) * 2;
+    if (index > 0 && (index + 1) * 2 + 1 < input.size()) right = (index + 1) * 2 + 1;
+
+    if (index == 0) left = 1, right = 2;
+    if (index == 1) left = 3, right = 4;
 
     if (left != 0 && right != 0) {
         if (input.at(left) > input.at(index) || input.at(right) > input.at(index)) {
@@ -35,14 +38,16 @@ void heapify(std::vector<int>& input, int index) {
             swap(input, index, left);
             heapify(input, left);
         }
-    }
-
-    if (index / 2 >= 0) {
-        heapify(input, index / 2);
+    } else {
+        return;
     }
 }
 
 std::vector<int> heapSort(std::vector<int> input) {
-    heapify(input, input.size() - 1);
+    for (int i = 1; i  <= input.size(); i++) {
+        heapify(input, input.size() - i);
+        std::cout << i << std::endl;
+        printStep(input);
+    }
     return input;
 }
