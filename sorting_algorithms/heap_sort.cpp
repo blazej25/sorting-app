@@ -7,47 +7,38 @@ void swap(std::vector<int>& input, int first, int second) {
     input.at(second) = hold;
 }
 
-void heapify(std::vector<int>& input, int index) {
-    int left = 0, right = 0;
+void heapify(std::vector<int>& input, int index, int size) {
+    int left = index * 2 + 1, right = index * 2 + 2;
+    int max = index;
 
-    if (index > 0 && (index + 1) * 2 < input.size()) left = (index + 1) * 2;
-    if (index > 0 && (index + 1) * 2 + 1 < input.size()) right = (index + 1) * 2 + 1;
+    if (size > right && input.at(right) > input.at(max)) {
+        max = right;
+    } 
 
-    if (index == 0) left = 1, right = 2;
-    if (index == 1) left = 3, right = 4;
+    if (size > left && input.at(left) > input.at(max)) {
+        max = left;
+    } 
 
-    if (left != 0 && right != 0) {
-        if (input.at(left) > input.at(index) || input.at(right) > input.at(index)) {
-            if (input.at(right) > input.at(left)) {
-                swap(input, index, right);
-                heapify(input, right);
-            } else {
-                swap(input, index, left);
-                heapify(input, left);
-            }
-        }  else {
-            return;
-        }
-    } else if (right != 0){
-        if (input.at(right) > input.at(index)) {
-            swap(input, index, right);
-            heapify(input, right);
-        }
-    } else if (left != 0) {
-        if (input.at(left) > input.at(index)) {
-            swap(input, index, left);
-            heapify(input, left);
-        }
-    } else {
-        return;
+    if (index != max) {
+        swap(input, index, max);
+        heapify(input, max, size);
     }
+    
 }
 
 std::vector<int> heapSort(std::vector<int> input) {
-    for (int i = 1; i  <= input.size(); i++) {
-        heapify(input, input.size() - i);
+    int size = input.size();
+
+    for (int i = size / 2 + 1; i  <= size; i++) {
+        heapify(input, input.size() - i, size);
         std::cout << i << std::endl;
         printStep(input);
     }
+
+    for (int i = size - 1; i > 0; i--) {
+        swap(input, 0, i);
+        heapify(input, 0, i);
+    }
+
     return input;
 }
