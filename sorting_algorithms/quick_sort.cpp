@@ -4,45 +4,32 @@
 #include <time.h>
 //#include "../print_step.h"
 
+void swap(std::vector<int>& input, int first, int second) {
+    int hold = input.at(first);
+    input.at(first) = input.at(second);
+    input.at(second) = hold;
+}
+
 void help(std::vector<int>& input, int low, int high) {
     if (low >= high) return;
 
-    int pivot = input.at(low);
-    int j;
-    int left = low;
-    int right = high;
+    int pivot = input.at(high);
+    int i = low - 1;
 
-    std::cout << std::endl;
-
-    while (true) {
-        while (input.at(left) < pivot) {
-            left++;
+    for (int j = low; j < high; j++) {
+        if (input.at(j) < pivot) {
+            i++;
+            swap(input, i, j);
         }
-
-        while (input.at(right) > pivot) {
-            right--;
-        }
-
-        if (left >= right) {
-            j = right;
-            break;
-        } 
-
-        int hold = input.at(left);
-        input.at(left) = input.at(right);
-        input.at(right) = hold;
-
-//        printStep(input);
     }
 
-    help(input, 0, j);
-    help(input, j + 1, high);
+    swap(input, i + 1, high);
+
+    help(input, 0, i);
+    help(input, i + 2, high);
 }
 
-std::vector<int> quickSort(std::vector<int> input) {
+void quickSort(std::vector<int>& input) {
     srand(time(0));
-    std::vector<int> output = input;
-    help(output, 0, output.size() - 1);
-
-    return output;    
+    help(input, 0, input.size() - 1);
 }

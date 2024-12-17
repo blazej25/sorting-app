@@ -1,6 +1,6 @@
 #include <vector>
 
-void countingSort(std::vector<int> input) {
+void countingSort(std::vector<int>& input) {
     int max = input.at(0);
 
     for (int num : input) {

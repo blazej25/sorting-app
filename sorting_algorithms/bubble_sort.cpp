@@ -2,7 +2,7 @@
 #include <vector>
 //#include"../print_step.h"
 
-std::vector<int> bubbleSort(std::vector<int> input) {
+void bubbleSort(std::vector<int>& input) {
     bool sorted = false;
     int i = 1;
     
@@ -18,12 +18,9 @@ std::vector<int> bubbleSort(std::vector<int> input) {
                 input.at(i) = input.at(i + 1);
                 input.at(i + 1) = hold;
             }
-
-//            printStep(input);
         }
 
         i++;
     }
 
-    return input;
 }

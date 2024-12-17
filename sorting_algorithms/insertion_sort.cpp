@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 
-std::vector<int> insertionSort(std::vector<int> input) {
+void insertionSort(std::vector<int>& input) {
     for (int i = 1; i < input.size(); i++) {
         int hold = input.at(i);
         for (int j = i - 1; j >= 0; j--) {
@@ -14,6 +14,4 @@ std::vector<int> insertionSort(std::vector<int> input) {
             }
         }
     }
-
-    return input;
 }

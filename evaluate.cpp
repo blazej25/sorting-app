@@ -15,7 +15,7 @@ std::vector<int> evaluate(std::vector<int> input) {
     std::vector<int> result;
 
     auto start = std::chrono::_V2::high_resolution_clock::now();
-    countingSort(input);
+    quickSort(input);
     auto stop = std::chrono::_V2::high_resolution_clock::now();
 
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
