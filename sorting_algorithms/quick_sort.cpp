@@ -1,7 +1,5 @@
-#include <iostream>
 #include <vector>
-#include <random>
-#include <time.h>
+#include <algorithm>
 #include "../functions/print_step.h"
 #include "sorting_algorithms.h"
 
@@ -14,17 +12,16 @@ void help(std::vector<int>& input, int low, int high) {
     for (int j = low; j < high; j++) {
         if (input.at(j) < pivot) {
             i++;
-            swap(input, i, j);
+            std::swap(input.at(i), input.at(j));
         }
     }
 
-    swap(input, i + 1, high);
+    std::swap(input.at(i + 1), input.at(high));
 
     help(input, 0, i);
     help(input, i + 2, high);
 }
 
 void quickSort(std::vector<int>& input) {
-    srand(time(0));
     help(input, 0, input.size() - 1);
 }

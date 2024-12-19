@@ -1,4 +1,5 @@
 #include <vector>
+#include <algorithm>
 #include "../functions/print_step.h"
 #include "sorting_algorithms.h"
 
@@ -15,7 +16,7 @@ void heapify(std::vector<int>& input, int index, int size) {
     } 
 
     if (index != max) {
-        swap(input, index, max);
+        std::swap(input.at(index), input.at(max));
         heapify(input, max, size);
     }
     
@@ -29,7 +30,7 @@ void heapSort(std::vector<int>& input) {
     }
 
     for (int i = size - 1; i > 0; i--) {
-        swap(input, 0, i);
+        std::swap(input.at(0), input.at(i));
         heapify(input, 0, i);
     }
 }

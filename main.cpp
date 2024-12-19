@@ -72,7 +72,7 @@ int main() {
 
     input = {5432, 3, 1, 2, 90, 100, 111, 50, 60, 2};
 
-    std::vector<int> result = evaluate(generate(30, 200), &countingSort);
+    std::vector<int> result = evaluate(generate(30, 200), &quickSort);
 
     for (int num : result) {
         std::cout << num << " ";

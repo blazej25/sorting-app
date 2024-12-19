@@ -41,5 +41,5 @@ all: $(TARGET)
 .PHONY: run
 run: clean all
 	clear
-	@echo "Executing"
+	@cowsay "Executing"
 	./app
