@@ -31,14 +31,14 @@ std::vector<int> generate(int length, int max) {
     return output;
 }
 
-void test() {
+void test(void (*my_sort)(std::vector<int>& input)) {
     std::vector<int> input;
     for (int i = 0; i < 10; i++) {
         input = generate(20, 100);
         std::vector proper = input;
         printStep(input);
         sort(proper.begin(), proper.end());
-        quickSort(input);
+        my_sort(input);
 
         for (int j = 0; j < 20; j++) {
             if (proper.at(j) != input.at(j)) {
@@ -72,14 +72,28 @@ int main() {
 
     input = {5432, 3, 1, 2, 90, 100, 111, 50, 60, 2};
 
-    /*
-    std::vector<int> result = evaluate(input);
+    std::vector<int> result = evaluate(generate(30, 200), &countingSort);
 
     for (int num : result) {
         std::cout << num << " ";
     }
+
+    /*
+    std::cout << "Testing quick sort\n";
+    test(&quickSort);
+    std::cout << "Testing bubble sort\n";
+    test(&bubbleSort);
+    std::cout << "Testing counting sort\n";
+    test(&countingSort);
+    std::cout << "Testing heap sort\n";
+    test(&heapSort);
+    std::cout << "Testing insertion sort\n";
+    test(&insertionSort);
+    std::cout << "Testing merge sort\n";
+    test(&mergeSort);
+    std::cout << "Testing selection sort\n";
+    test(&selectionSort);
     */
-   test();
     
     return 0;
 }

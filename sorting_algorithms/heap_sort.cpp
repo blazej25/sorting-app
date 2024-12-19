@@ -26,7 +26,6 @@ void heapSort(std::vector<int>& input) {
 
     for (int i = size / 2 + 1; i  <= size; i++) {
         heapify(input, input.size() - i, size);
-        printStep(input);
     }
 
     for (int i = size - 1; i > 0; i--) {

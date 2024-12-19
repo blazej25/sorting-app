@@ -13,17 +13,25 @@
 #include "../sorting_algorithms/sorting_algorithms.h"
 
 
-std::vector<int> evaluate(std::vector<int> input) {
+std::vector<int> evaluate(std::vector<int> input, void (*my_sort)(std::vector<int>& input)) {
     //auto start, stop, duration;
-    std::vector<int> result;
+    std::vector<int> result = input;
 
     auto start = std::chrono::_V2::high_resolution_clock::now();
-    quickSort(input);
+    my_sort(input);
     auto stop = std::chrono::_V2::high_resolution_clock::now();
 
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
 
-    std::cout << "Time taken by selection sort: " << duration.count() << std::endl;
+    std::cout << "Time taken by your chosen sorting algorithm: " << duration.count() << std::endl;
+    
+    auto startRef = std::chrono::_V2::high_resolution_clock::now();
+    sort(result.begin(), result.end());
+    auto stopRef = std::chrono::_V2::high_resolution_clock::now();
+
+    auto durationRef = std::chrono::duration_cast<std::chrono::microseconds>(stopRef - startRef);
+
+    std::cout << "Time taken by sort() function: " << durationRef.count() << std::endl;
 
     return input;
 }
