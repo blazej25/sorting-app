@@ -1,5 +1,6 @@
 #include <vector>
-//#include "../print_step.h"
+#include "../functions/print_step.h"
+#include "sorting_algorithms.h"
 
 void mergeSort(std::vector<int>& input) {
     if (input.size() == 1) {

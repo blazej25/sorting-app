@@ -1,6 +1,7 @@
 #include <vector>
+#include "sorting_algorithms.h"
 
-void selectionSort(std::vector<int> input) {
+void selectionSort(std::vector<int>& input) {
     for (int i = 0; i < input.size() - 1; i++) {
         int smallest = i + 1;
 

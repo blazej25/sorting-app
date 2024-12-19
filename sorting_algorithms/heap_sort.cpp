@@ -1,11 +1,6 @@
 #include <vector>
-#include "../print_step.h"
-
-void swap(std::vector<int>& input, int first, int second) {
-    int hold = input.at(first);
-    input.at(first) = input.at(second);
-    input.at(second) = hold;
-}
+#include "../functions/print_step.h"
+#include "sorting_algorithms.h"
 
 void heapify(std::vector<int>& input, int index, int size) {
     int left = index * 2 + 1, right = index * 2 + 2;
@@ -31,6 +26,7 @@ void heapSort(std::vector<int>& input) {
 
     for (int i = size / 2 + 1; i  <= size; i++) {
         heapify(input, input.size() - i, size);
+        printStep(input);
     }
 
     for (int i = size - 1; i > 0; i--) {

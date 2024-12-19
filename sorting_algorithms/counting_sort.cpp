@@ -1,4 +1,5 @@
 #include <vector>
+#include "sorting_algorithms.h"
 
 void countingSort(std::vector<int>& input) {
     int max = input.at(0);

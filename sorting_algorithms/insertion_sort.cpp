@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include "sorting_algorithms.h"
 
 void insertionSort(std::vector<int>& input) {
     for (int i = 1; i < input.size(); i++) {

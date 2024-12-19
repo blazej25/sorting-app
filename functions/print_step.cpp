@@ -1,7 +1,8 @@
-#include <iostream>
 #include <vector>
+#include <iostream>
+#include "print_step.h"
 
-extern void printStep(std::vector<int> input) {
+void printStep(std::vector<int> input) {
     for (int num : input) {
         std::cout << num << " ";
     }

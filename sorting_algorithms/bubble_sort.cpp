@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-//#include"../print_step.h"
+#include "sorting_algorithms.h"
+#include"../functions/print_step.h"
 
 void bubbleSort(std::vector<int>& input) {
     bool sorted = false;

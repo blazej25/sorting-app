@@ -2,13 +2,8 @@
 #include <vector>
 #include <random>
 #include <time.h>
-//#include "../print_step.h"
-
-void swap(std::vector<int>& input, int first, int second) {
-    int hold = input.at(first);
-    input.at(first) = input.at(second);
-    input.at(second) = hold;
-}
+#include "../functions/print_step.h"
+#include "sorting_algorithms.h"
 
 void help(std::vector<int>& input, int low, int high) {
     if (low >= high) return;
