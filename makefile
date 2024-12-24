@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g
+CXXFLAGS = -g -lncurses
 TARGET = main
 TARGET_DEL = main.exe
 
@@ -42,4 +42,8 @@ all: $(TARGET)
 run: clean all
 	clear
 	@cowsay "Executing"
+	./app
+
+.PHONY: execute
+execute:
 	./app
