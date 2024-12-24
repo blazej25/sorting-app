@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <istream>
+#include <ncurses.h>
 #include <chrono>
 //#include"sorting_algorithms/insertion_sort/insertion_sort.h"
 //#include"sorting_algorithms/selection_sort/selection_sort.h"
@@ -20,9 +21,9 @@
 
 std::vector<int> generate(int length, int max) {
     std::vector<int> output(length);
-    static std::random_device rd;                               
-    static std::mt19937 generator(rd());                       
-    static std::uniform_int_distribution<int> distribution(1, max); 
+    static std::random_device rd;
+    static std::mt19937 generator(rd());
+    static std::uniform_int_distribution<int> distribution(1, max);
 
     for (int i = 0; i < length; i++) {
         output.at(i) = distribution(generator);
@@ -77,6 +78,19 @@ int main() {
     for (int num : result) {
         std::cout << num << " ";
     }
+    initscr();
+     // print to screen
+    printw("Hello World");
+
+    // refreshes the screen
+    refresh();
+
+    // pause the screen output
+    getch();
+
+    // deallocates memory and ends ncurses
+    endwin();
+    return 0;
 
     /*
     std::cout << "Testing quick sort\n";
@@ -94,6 +108,6 @@ int main() {
     std::cout << "Testing selection sort\n";
     test(&selectionSort);
     */
-    
+
     return 0;
 }
